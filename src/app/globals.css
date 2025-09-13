@@ -19,6 +19,29 @@
   }
 }
 
+[data-theme="sky"] {
+  --background: #020617;
+  --foreground: #38bdf8;
+}
+
+/* AQUA theme */
+[data-theme="aqua"] {
+  --background: #050d14;
+  --foreground: #48d2df;
+}
+
+/* PURPLE theme */
+[data-theme="purple"] {
+  --background: #050a0f;
+  --foreground: #bc6af6;
+}
+
+/* BLUE theme */
+[data-theme="blue"] {
+  --background: #0f172a;
+  --foreground: #60a5fa;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
