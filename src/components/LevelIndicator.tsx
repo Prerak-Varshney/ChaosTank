@@ -1,10 +1,6 @@
-const LevelIndicator = ({ currentWaterLevel }: { currentWaterLevel: number }) => {
-    const getLevelColor = (currentWaterLevel: number) => {
-        // Hue: 0 = red, 120 = green
-        const hue = (currentWaterLevel * 120) / 100;
-        return `hsl(${hue}, 80%, 50%)`;
-    };
+import { getLevelColor } from "../utils/ColorIndicator";
 
+const LevelIndicator = ({ currentWaterLevel }: { currentWaterLevel: number }) => {
     return (
         <div 
             className={`
