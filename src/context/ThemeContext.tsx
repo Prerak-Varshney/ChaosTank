@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-type Theme = "sky" | "aqua" | "purple" | "blue";
+type Theme = "Sky" | "Ocean" | "Aqua" | "Purple";
 
 interface ThemeContextType {
   theme: Theme;
@@ -12,7 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("sky");
+  const [theme, setTheme] = useState<Theme>("Sky");
 
   // Persist theme in localStorage
   useEffect(() => {

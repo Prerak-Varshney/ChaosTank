@@ -1,12 +1,10 @@
-// "use client";
-// import { useState } from "react";
 import Tank from "@/components/Tank";
-import levels from "@/constants/levels";
+import { levels } from "@/constants/levels";
 import Navbar from "@/components/Navbar";
 import { getLevelColor } from "@/utils/ColorIndicator";
 const Home = () => {
-  const currentWaterLevel = 50;
-  // const [dataTheme, setDataTheme] = useState('aqua');
+
+  const currentWaterLevel = 80;
 
   return (
     <div className={`w-full h-screen flex flex-col items-center justify-start bg-background text-foreground`}>

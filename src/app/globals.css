@@ -19,27 +19,28 @@
   }
 }
 
-[data-theme="sky"] {
+/* Ocean theme */
+[data-theme="Ocean"] {
+  --background: #020617;
+  --foreground: #60a5fa;
+}
+
+/* Sky theme */
+[data-theme="Sky"] {
   --background: #020617;
   --foreground: #38bdf8;
 }
 
 /* AQUA theme */
-[data-theme="aqua"] {
+[data-theme="Aqua"] {
   --background: #050d14;
   --foreground: #48d2df;
 }
 
 /* PURPLE theme */
-[data-theme="purple"] {
+[data-theme="Purple"] {
   --background: #050a0f;
   --foreground: #bc6af6;
-}
-
-/* BLUE theme */
-[data-theme="blue"] {
-  --background: #0f172a;
-  --foreground: #60a5fa;
 }
 
 body {
