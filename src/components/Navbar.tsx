@@ -39,6 +39,7 @@ const Navbar = () => {
                                 label={"Theme"} 
                                 onMouseEnter={handleMouseEnter} 
                                 onMouseLeave={handleMouseLeave} 
+                                setShowMenu={setShowMenu}
                             />
                         </div>
                     )

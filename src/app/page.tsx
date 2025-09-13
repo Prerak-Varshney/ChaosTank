@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import { getLevelColor } from "@/utils/ColorIndicator";
 const Home = () => {
 
-  const currentWaterLevel = 80;
+  const currentWaterLevel = 75;
 
   return (
     <div className={`w-full h-screen flex flex-col items-center justify-start bg-background text-foreground`}>

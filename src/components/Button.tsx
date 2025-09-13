@@ -6,8 +6,9 @@ interface ButtonProps {
     label: string;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
+    setShowMenu: (show: boolean) => void;
 }
-const Button = ({label, onMouseEnter, onMouseLeave}: ButtonProps) => {
+const Button = ({label, onMouseEnter, onMouseLeave, setShowMenu}: ButtonProps) => {
     const [showThemeMenu, setShowThemeMenu] = useState<boolean>(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -51,7 +52,7 @@ const Button = ({label, onMouseEnter, onMouseLeave}: ButtonProps) => {
                                             ${theme === t ? 'bg-foreground text-white' : 'bg-background text-foreground'}
                                         `}
                                     >
-                                        <button onClick={() => {setTheme(t); setShowThemeMenu(false);}}>{t}</button>
+                                        <button onClick={() => {setTheme(t); setShowThemeMenu(false);setShowMenu(false);}}>{t}</button>
                                     </div>
                                 ))
                             } 
