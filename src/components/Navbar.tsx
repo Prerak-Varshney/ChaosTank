@@ -1,7 +1,7 @@
 "use client"
 import { useState, useRef } from "react";
 import Hamburger from "./Hamburger"
-import Button from "@/components/Button";
+import ThemeButton from "@/components/ThemeButton";
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -32,7 +32,7 @@ const Navbar = () => {
                 {
                     showMenu && (
                         <div className={`absolute bg-background border border-foreground w-30 rounded-sm flex flex-col items-center justify-start top-0 right-10 transition-all duration-300 z-20`}>
-                            <Button 
+                            <ThemeButton 
                                 label={"Theme"} 
                                 onMouseEnter={handleMouseEnter} 
                                 onMouseLeave={handleMouseLeave} 

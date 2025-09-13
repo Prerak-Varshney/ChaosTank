@@ -1,65 +1,24 @@
-"use client"
-import { useState, useRef } from "react";
-import { useTheme } from "@/context/ThemeContext"
-import { themes } from "@/constants/levels";
 interface ButtonProps {
-    label: string;
-    onMouseEnter: () => void;
-    onMouseLeave: () => void;
-    setShowMenu: (show: boolean) => void;
+    buttonName: string;
+    onClick?: () => void;
+    color?: "foreground" | "error";
 }
-const Button = ({label, onMouseEnter, onMouseLeave, setShowMenu}: ButtonProps) => {
-    const [showThemeMenu, setShowThemeMenu] = useState<boolean>(false);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-    const { theme, setTheme } = useTheme();
-
-    const handleMouseEnter = () => {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
-        setShowThemeMenu(true);
-    };
-
-    const handleMouseLeave = () => {
-        timeoutRef.current = setTimeout(() => {
-            setShowThemeMenu(false);
-        }, 300);
-    };
-    return(
-        <div 
-            className={`w-full h-8 flex items-center justify-center hover:bg-foreground hover:text-white cursor-pointer transition-all duration-300 font-bold`} 
-            onMouseEnter={() => {
-                handleMouseEnter();
-                onMouseEnter();
-            }} 
-            onMouseLeave={() => {
-                handleMouseLeave();
-                onMouseLeave();
-            }}
+const Button = ({buttonName, onClick, color = "foreground"}: ButtonProps) => {
+    return (
+        <button 
+            type="button" 
+            className={`
+                px-4 py-1 font-bold text-md rounded-md border transition-colors duration-300 ease-in-out
+                 
+                 ${color === "foreground" ? `border-foreground bg-background text-foreground hover:bg-foreground hover:text-white` : 
+                    `border-red-600 bg-transparent text-red-600 hover:bg-red-600 hover:text-white`
+                 }
+            `} 
+            onClick={onClick}
         >
-            <div>{label}</div>
-                {
-                    showThemeMenu && 
-                        <div className={`absolute border border-foreground w-full top-16 right-18 transform -translate-y-1/2 -translate-x-1/2 rounded-sm`}>
-                            {
-                                themes.map((t: "Ocean" | "Sky" | "Aqua" | "Purple", index: number) => ( 
-                                    <div 
-                                        key={index} 
-                                        className={`
-                                            w-full h-8 flex items-center justify-center hover:bg-foreground hover:text-white cursor-pointer transition-all duration-300 font-bold 
-                                            ${index !== 0 ? 'border-t border-t-foreground' : ''}
-                                            ${theme === t ? 'bg-foreground text-white' : 'bg-background text-foreground'}
-                                        `}
-                                    >
-                                        <button onClick={() => {setTheme(t); setShowThemeMenu(false);setShowMenu(false);}}>{t}</button>
-                                    </div>
-                                ))
-                            } 
-                        </div>
-                }
-        </div>
-    )
+            {buttonName}
+        </button>
+    );
 }
 
-export default Button;
+export default Button
