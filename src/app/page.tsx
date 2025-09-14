@@ -1,7 +1,7 @@
 "use client";
+// import Pump from "@/components/Pump";
 import Navbar from "@/components/Navbar";
 import Tank from "@/components/Tank";
-import Pump from "@/components/Pump";
 import Loading from "@/components/Loading";
 import Button from "@/components/Button";
 import Error from "@/components/Error";
