@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { URL } from "@/constants/levels";
 import { debounce, throttle } from "@/utils/DbandTh";
 
 const useFetch = () => {
@@ -15,6 +14,8 @@ const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<"url" | "network" | "fetch" | "invalid" | null>(null);
   const firstLoad = useRef(true);
+
+  const URL = process.env.API_URL;
 
   const fetchData = useCallback(async () => {
     if (!URL) {
@@ -37,7 +38,7 @@ const useFetch = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(URL, { method: "GET" });
+      const response = await fetch(`${URL}/water-level`, { method: "GET" });
       if (!response.ok) {
         setError("network");
         setData({
