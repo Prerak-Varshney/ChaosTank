@@ -9,18 +9,18 @@ import { getLevelColor } from "@/utils/ColorIndicator";
 import { LEVELS } from "@/constants/levels";
 const Home = () => {
 
-  const { data, loading, error, refetch } = useFetch();
+  const { data, showLoading, setShowLoading, loading, error, refetch } = useFetch();
 
   return (
     <div className={`w-full h-screen flex flex-col items-center justify-start bg-background text-foreground`}>
       <Navbar />
         <div className={`w-full h-[calc(100vh-5rem)] flex flex-col items-center justify-center`}>
             {
-              loading ? <Loading /> : (
-                error === "url" ? <Error message={"Invalid URL. Please check the configuration."} /> :
-                error === "network" ? <Error message={"Network error. Please check your connection."} /> :
-                error === "fetch" ? <Error message={"Error while fetching data. Please try again later."} /> :
-                error === "invalid" ? <Error message={data ? data.message : "Invalid response from server."} /> :
+              showLoading ? <Loading /> : (
+                error === "url" ? <Error message={"Invalid URL. Please check the configuration."} onClick={() => { setShowLoading(true); refetch(); }} /> :
+                error === "network" ? <Error message={"Network error. Please check your connection."} onClick={() => { setShowLoading(true); refetch(); }} /> :
+                error === "fetch" ? <Error message={"Error while fetching data. Please try again later."} onClick={() => { setShowLoading(true); refetch(); }} /> :
+                error === "invalid" ? <Error message={data ? data.message : "Invalid response from server."} onClick={() => { setShowLoading(true); refetch(); }} /> :
                   <>
                     <Tank levels={LEVELS} CurrentWaterLevel={data ? data.currentWaterLevel : 0}/>
                     <div className={`w-60 h-20 font-bold text-white text-lg flex items-center justify-center gap-2`}>
@@ -31,7 +31,14 @@ const Home = () => {
                         {data ? data.currentWaterLevel : 0}%
                       </div>
                     </div>
-                    <Button buttonName="Refresh" onClick={refetch} />
+                    <Button 
+                      loading={loading} 
+                      buttonName="Refresh" 
+                      onClick={() => { 
+                        setShowLoading(true); 
+                        refetch(); 
+                      }} 
+                    />
                   </>
                 )
               
