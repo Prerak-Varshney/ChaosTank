@@ -1,4 +1,4 @@
-import Loading from "./Loading";
+// import Loading from "./Loading";
 interface ButtonProps {
     buttonName: string;
     loading?: boolean;
@@ -18,7 +18,8 @@ const Button = ({buttonName, loading=false, onClick, color = "foreground"}: Butt
             onClick={onClick}
             disabled={loading}
         >
-            {loading ? <Loading size={5} /> : buttonName}
+            {/* {loading ? <Loading size={5} /> : buttonName} */}
+            {buttonName}
         </button>
     );
 }
