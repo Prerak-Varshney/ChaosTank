@@ -17,7 +17,7 @@ const useFetch = () => {
 
   const URL = process.env.NEXT_PUBLIC_API_URL;
 
-  console.log("API URL:", URL);
+  // console.log("API URL:", URL);
 
   const fetchData = useCallback(async () => {
     if (!URL) {
