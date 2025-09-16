@@ -1,5 +1,3 @@
-import { useTheme } from "@/context/ThemeContext";
-
 const getLevelColor = (currentWaterLevel: number) => {
         // Hue: 0 = red, 120 = green
     const hue = (currentWaterLevel * 120) / 100;

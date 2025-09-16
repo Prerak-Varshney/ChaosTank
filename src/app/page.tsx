@@ -13,7 +13,7 @@ const Home = () => {
   const { data, showLoading, setShowLoading, loading, error, refetch } = useFetch();
 
   return (
-    <div className={`w-full h-screen flex flex-col items-center justify-start bg-background text-foreground`}>
+    <div className={`w-full max-h-screen flex flex-col items-center justify-start bg-background text-foreground`}>
       <Navbar />
         <div className={`w-full h-[calc(100vh-5rem)] flex items-center justify-center`}>
             {

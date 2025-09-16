@@ -15,7 +15,9 @@ const useFetch = () => {
   const [error, setError] = useState<"url" | "network" | "fetch" | "invalid" | null>(null);
   const firstLoad = useRef(true);
 
-  const URL = process.env.API_URL;
+  const URL = process.env.NEXT_PUBLIC_API_URL;
+
+  console.log("API URL:", URL);
 
   const fetchData = useCallback(async () => {
     if (!URL) {

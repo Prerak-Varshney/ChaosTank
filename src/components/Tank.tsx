@@ -14,6 +14,7 @@ const Tank = ({levels, CurrentWaterLevel}: TankProps) => {
                 levels.map((level, index) => (
                     <LevelLine 
                         level={level} 
+                        currentWaterLevel={CurrentWaterLevel}
                         key={index} 
                     />
                 ))
