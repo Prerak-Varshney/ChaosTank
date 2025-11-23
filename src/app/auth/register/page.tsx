@@ -71,7 +71,7 @@ const RegisterPage = () => {
                     required={true}
                     disabled={loading}
                 />
-                <Button loading={loading} buttonName="Register" type="submit" />
+                <Button loading={loading} buttonName="Register" type="submit" variant="filled" fullWidth />
             </form>
             <p className="text-center text-sm text-muted-foreground">
                 Already have an account?{" "}

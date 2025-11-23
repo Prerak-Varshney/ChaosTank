@@ -66,7 +66,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 body: JSON.stringify(formData),
                 credentials: "include",
             });
-            const data = await res.json();
+
+            let data;
+            try {
+                data = await res.json();
+            } catch (err) {
+                throw new Error(`Server Error: ${res.status} ${res.statusText}`);
+            }
+
             if (data.status === "success") {
                 await checkAuth();
                 router.push("/");
@@ -86,7 +93,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 body: JSON.stringify(formData),
                 credentials: "include",
             });
-            const data = await res.json();
+
+            let data;
+            try {
+                data = await res.json();
+            } catch (err) {
+                throw new Error(`Server Error: ${res.status} ${res.statusText}`);
+            }
+
             if (data.status === "success") {
                 await checkAuth();
                 router.push("/");

@@ -61,7 +61,7 @@ const LoginPage = () => {
                     required={true}
                     disabled={loading}
                 />
-                <Button loading={loading} buttonName="Login" type="submit" />
+                <Button loading={loading} buttonName="Login" type="submit" variant="filled" fullWidth />
             </form>
             <p className="text-center text-sm text-muted-foreground">
                 Don&apos;t have an account?{" "}
