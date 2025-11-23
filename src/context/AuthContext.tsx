@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const checkAuth = async () => {
         try {
+            console.log("Checking auth status...");
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, { credentials: "include" });
             const data = await res.json();
             if (data.status === "success") {
@@ -61,6 +62,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const login = async (formData: LoginData) => {
         try {
+            console.log("Attempting login...");
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -115,7 +117,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const logout = async () => {
         try {
-            await fetch("/api/v1/logout", { method: "POST", credentials: "include" });
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, { method: "POST", credentials: "include" });
             setUser(null);
             router.push("/auth/login");
         } catch (error) {
