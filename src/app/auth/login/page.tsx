@@ -57,7 +57,7 @@ const LoginPage = () => {
                     type="password"
                     value={formData.password}
                     onChange={handleChange}
-                    placeholder="••••••••"
+                    placeholder="Password"
                     required={true}
                     disabled={loading}
                 />
