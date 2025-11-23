@@ -23,8 +23,12 @@ const RegisterPage = () => {
         setLoading(true);
         try {
             await register(formData);
-        } catch (err: any) {
-            setError(err.message || "Registration failed");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("An unknown error occurred");
+            }
         } finally {
             setLoading(false);
         }

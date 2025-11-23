@@ -76,7 +76,7 @@ const useFetch = () => {
       setLoading(false);
       setShowLoading(false);
     }
-  }, [error]);
+  }, [error, URL]);
 
   const debouncedFetch = useRef(debounce(fetchData, 300)).current;
   const throttledFetch = useRef(throttle(fetchData, 5000)).current;

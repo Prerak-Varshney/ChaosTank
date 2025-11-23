@@ -23,8 +23,12 @@ const LoginPage = () => {
         setLoading(true);
         try {
             await login(formData);
-        } catch (err: any) {
-            setError(err.message || "Login failed");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("An unknown error occurred");
+            }
         } finally {
             setLoading(false);
         }
@@ -33,10 +37,10 @@ const LoginPage = () => {
     return (
         <AuthPanel
             title="Welcome Back"
-            subtitle="Login to access your dashboard"
+            subtitle="Enter your credentials to access your account"
             error={error}
         >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                     label="Email"
                     name="email"
@@ -53,14 +57,14 @@ const LoginPage = () => {
                     type="password"
                     value={formData.password}
                     onChange={handleChange}
-                    placeholder="Password"
+                    placeholder="••••••••"
                     required={true}
                     disabled={loading}
                 />
                 <Button loading={loading} buttonName="Login" type="submit" />
             </form>
             <p className="text-center text-sm text-muted-foreground">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                     href="/auth/register"
                     className="font-medium text-primary hover:text-primary/80 hover:underline transition-colors"

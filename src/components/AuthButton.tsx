@@ -7,7 +7,7 @@ interface AuthButtonProps {
     setShowMenu: (show: boolean) => void;
     onClick?: () => void;
 }
-const AuthButton = ({ label, onMouseEnter, onMouseLeave, setShowMenu, onClick }: AuthButtonProps) => {
+const AuthButton = ({ label, onMouseEnter, onMouseLeave, onClick }: AuthButtonProps) => {
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleMouseEnter = () => {

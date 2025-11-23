@@ -46,7 +46,7 @@ const Pump = () => {
         }
 
         updateMotorStatus(!motorStatus);
-    }, [isAutomatic, isInAutoMode, motorStatus]);
+    }, [isAutomatic, isInAutoMode, motorStatus, updateMotorStatus]);
 
     const handleManualMotor = () => {
         if (isAutomatic || isInAutoMode) return;

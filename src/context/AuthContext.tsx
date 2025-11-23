@@ -10,11 +10,22 @@ interface User {
     role: string;
 }
 
+interface LoginData {
+    email: string;
+    password: string;
+}
+
+interface RegisterData {
+    name: string;
+    email: string;
+    password: string;
+}
+
 interface AuthContextType {
     user: User | null;
     loading: boolean;
-    login: (data: any) => Promise<void>;
-    register: (data: any) => Promise<void>;
+    login: (data: LoginData) => Promise<void>;
+    register: (data: RegisterData) => Promise<void>;
     logout: () => Promise<void>;
     checkAuth: () => Promise<void>;
 }
@@ -47,7 +58,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         checkAuth();
     }, []);
 
-    const login = async (formData: any) => {
+    const login = async (formData: LoginData) => {
         try {
             const res = await fetch("/api/v1/login", {
                 method: "POST",
@@ -67,7 +78,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const register = async (formData: any) => {
+    const register = async (formData: RegisterData) => {
         try {
             const res = await fetch("/api/v1/register", {
                 method: "POST",
