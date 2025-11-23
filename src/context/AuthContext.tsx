@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+
 interface User {
     id: number;
     name: string;
@@ -39,7 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const checkAuth = async () => {
         try {
-            const res = await fetch("/api/v1/me", { credentials: "include" });
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, { credentials: "include" });
             const data = await res.json();
             if (data.status === "success") {
                 setUser(data.user);
@@ -60,7 +61,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const login = async (formData: LoginData) => {
         try {
-            const res = await fetch("/api/v1/login", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
@@ -87,7 +88,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const register = async (formData: RegisterData) => {
         try {
-            const res = await fetch("/api/v1/register", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
