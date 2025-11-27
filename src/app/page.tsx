@@ -56,7 +56,7 @@ const Home = () => {
               error === "network" ? <Error message={"Network error. Please check your connection."} onClick={() => { setShowLoading(true); refetch(); }} /> :
                 error === "fetch" ? <Error message={"Error while fetching data. Please try again later."} onClick={() => { setShowLoading(true); refetch(); }} /> :
                   error === "invalid" ? <Error message={data ? data.message : "Invalid response from server."} onClick={() => { setShowLoading(true); refetch(); }} /> :
-                    <div className={`w-full h-full flex items-center justify-center`}>
+                    <div className={`w-full h-full flex flex-col mt-20 md:mt-0 gap-20 md:gap-0 justify-start items-center md:flex-row md:justify-center`}>
                       <div className={`w-120 h-full flex flex-col items-center justify-center`}>
                         <Tank levels={LEVELS} CurrentWaterLevel={data ? data.currentWaterLevel : 0} />
                         <div className={`w-60 h-20 font-bold text-white text-lg flex items-center justify-center gap-2`}>
